@@ -43,12 +43,15 @@ export default function NavBar({ onAddClick, title, onPrev, onNext }: NavBarProp
         <Link href="/settings" className="text-[10px] text-gray-400 mt-0.5">⚙️ iCloud</Link>
       </div>
 
-      <button
-        onClick={onAddClick}
-        className="bg-orange-400 text-white rounded-full w-8 h-8 text-xl leading-none flex items-center justify-center"
-      >
-        +
-      </button>
+      <div className="flex gap-2 items-center">
+        <button onClick={onNext} className="text-gray-400 text-2xl leading-none px-1">›</button>
+        <button
+          onClick={onAddClick}
+          className="bg-orange-400 text-white rounded-full w-8 h-8 text-xl leading-none flex items-center justify-center"
+        >
+          +
+        </button>
+      </div>
     </div>
   )
 }
