@@ -59,6 +59,10 @@ export async function POST(req: NextRequest) {
 
   const { calendarUrl, uid, icalData } = await req.json()
 
+  if (!calendarUrl || !uid || !icalData) {
+    return NextResponse.json({ error: 'Missing required fields: calendarUrl, uid, icalData' }, { status: 400 })
+  }
+
   try {
     const client = await getClient(appleId, appPassword)
     const objectUrl = `${calendarUrl}${uid}.ics`
@@ -84,6 +88,10 @@ export async function PUT(req: NextRequest) {
 
   const { objectUrl, etag, icalData } = await req.json()
 
+  if (!objectUrl || !icalData) {
+    return NextResponse.json({ error: 'Missing required fields: objectUrl, icalData' }, { status: 400 })
+  }
+
   try {
     const client = await getClient(appleId, appPassword)
     await client.updateCalendarObject({
@@ -105,6 +113,10 @@ export async function DELETE(req: NextRequest) {
   }
 
   const { objectUrl, etag } = await req.json()
+
+  if (!objectUrl) {
+    return NextResponse.json({ error: 'Missing required field: objectUrl' }, { status: 400 })
+  }
 
   try {
     const client = await getClient(appleId, appPassword)
