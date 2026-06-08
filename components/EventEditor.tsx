@@ -15,7 +15,7 @@ interface EventEditorProps {
 const CATEGORIES_LIST = Object.keys(CATEGORIES) as Category[]
 
 const defaultForm = (date?: Date): Omit<CalendarEvent, 'id'> => {
-  const start = date ?? new Date()
+  const start = new Date(date ?? new Date())
   start.setMinutes(0, 0, 0)
   const end = new Date(start)
   end.setHours(end.getHours() + 1)
@@ -42,12 +42,18 @@ export default function EventEditor({ event, initialDate, onSave, onDelete, onCl
     event ? { ...event } : defaultForm(initialDate)
   )
   const [confirmDelete, setConfirmDelete] = useState(false)
+  const [timeError, setTimeError] = useState(false)
 
   const set = <K extends keyof typeof form>(key: K, value: (typeof form)[K]) =>
     setForm(f => ({ ...f, [key]: value }))
 
   const handleSave = () => {
     if (!form.title.trim()) return
+    if (new Date(form.startTime) >= new Date(form.endTime)) {
+      setTimeError(true)
+      return
+    }
+    setTimeError(false)
     onSave({
       ...form,
       id: event?.id ?? uuidv4(),
@@ -126,7 +132,10 @@ export default function EventEditor({ event, initialDate, onSave, onDelete, onCl
           <label className="text-xs font-medium text-gray-500 mb-1 block">Повтор</label>
           <select
             value={form.repeat}
-            onChange={e => set('repeat', e.target.value as RepeatType)}
+            onChange={e => {
+              const val = e.target.value
+              if (val === 'none' || val === 'weekly' || val === 'daily') set('repeat', val as RepeatType)
+            }}
             className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-orange-400"
           >
             <option value="none">Не повторять</option>
@@ -140,7 +149,10 @@ export default function EventEditor({ event, initialDate, onSave, onDelete, onCl
           <label className="text-xs font-medium text-gray-500 mb-1 block">Напоминание</label>
           <select
             value={form.reminder}
-            onChange={e => set('reminder', Number(e.target.value) as ReminderMinutes)}
+            onChange={e => {
+              const val = Number(e.target.value)
+              if (val === 0 || val === 15 || val === 30 || val === 60) set('reminder', val as ReminderMinutes)
+            }}
             className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-orange-400"
           >
             <option value={0}>Без напоминания</option>
@@ -151,6 +163,9 @@ export default function EventEditor({ event, initialDate, onSave, onDelete, onCl
         </div>
 
         {/* Actions */}
+        {timeError && (
+          <p className="text-xs text-red-500 -mt-2">Время окончания должно быть позже начала</p>
+        )}
         <button
           onClick={handleSave}
           disabled={!form.title.trim()}
