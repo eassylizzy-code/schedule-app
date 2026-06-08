@@ -54,7 +54,7 @@ export default function MonthGrid({ month, events, onDayClick }: MonthGridProps)
       {/* Day cells */}
       <div className="grid grid-cols-7 gap-0.5">
         {cells.map((day, i) => {
-          if (!day) return <div key={i} />
+          if (!day) return <div key={i} className="aspect-square" />
           const dayEvents = eventsForDay(events, day)
           const isToday = day.toDateString() === today.toDateString()
 
