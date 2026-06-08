@@ -24,8 +24,14 @@ export default function SettingsPage() {
     }
   }, [])
 
+  useEffect(() => {
+    setCalendars([])
+    setCalendarUrl('')
+  }, [appleId])
+
   const handleFetchCalendars = async () => {
     setLoading(true); setError(null)
+    setCalendarUrl('')
     try {
       const creds: ICloudCredentials = { appleId, appPassword, calendarUrl: '' }
       const list = await listCalendars(creds)
@@ -121,11 +127,14 @@ export default function SettingsPage() {
           </button>
         </div>
 
-        {syncState.lastSynced && (
-          <p className="text-xs text-gray-400 text-center">
-            Синхронизировано: {new Date(syncState.lastSynced).toLocaleString('ru')}
-          </p>
-        )}
+        {syncState.lastSynced && (() => {
+          const d = new Date(syncState.lastSynced)
+          return !isNaN(d.getTime()) ? (
+            <p className="text-xs text-gray-400 text-center">
+              Синхронизировано: {d.toLocaleString('ru')}
+            </p>
+          ) : null
+        })()}
 
         <button
           onClick={handleDisconnect}
