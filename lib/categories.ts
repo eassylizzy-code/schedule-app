@@ -12,7 +12,7 @@ export interface CategoryMeta {
 export const CATEGORIES: Record<Category, CategoryMeta> = {
   work: {
     label: 'Работа',
-    icon: '👶',
+    icon: '💼',
     color: 'bg-blue-100',
     borderColor: 'border-blue-500',
     textColor: 'text-blue-900',
