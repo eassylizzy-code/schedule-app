@@ -6,6 +6,8 @@ const withPWA = require('next-pwa')({
   skipWaiting: true,
 })
 
-const nextConfig: NextConfig = {}
+const nextConfig: NextConfig = {
+  turbopack: {},
+}
 
 module.exports = withPWA(nextConfig)

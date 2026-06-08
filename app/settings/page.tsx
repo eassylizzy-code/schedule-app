@@ -13,7 +13,7 @@ export default function SettingsPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [saved, setSaved] = useState(false)
-  const syncState = loadSyncState()
+  const [syncState, setSyncState] = useState<{ lastSynced: string | null; error: string | null }>({ lastSynced: null, error: null })
 
   useEffect(() => {
     const creds = loadCredentials()
@@ -22,6 +22,7 @@ export default function SettingsPage() {
       setAppPassword(creds.appPassword)
       setCalendarUrl(creds.calendarUrl)
     }
+    setSyncState(loadSyncState())
   }, [])
 
   useEffect(() => {
