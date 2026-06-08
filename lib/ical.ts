@@ -1,18 +1,11 @@
 import { CalendarEvent, Category, RepeatType, ReminderMinutes } from './types'
 
 function formatIcalDate(iso: string): string {
-  // Convert ISO 8601 to iCal datetime format: 20260609T100000
-  const d = new Date(iso)
-  const pad = (n: number) => String(n).padStart(2, '0')
-  return (
-    d.getFullYear().toString() +
-    pad(d.getMonth() + 1) +
-    pad(d.getDate()) +
-    'T' +
-    pad(d.getHours()) +
-    pad(d.getMinutes()) +
-    pad(d.getSeconds())
-  )
+  // Extract datetime components directly from ISO string to preserve local time
+  // Input: "2026-06-09T10:00:00+03:00" or "2026-06-09T10:00:00Z"
+  const m = iso.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/)
+  if (!m) throw new Error(`Invalid ISO date: ${iso}`)
+  return `${m[1]}${m[2]}${m[3]}T${m[4]}${m[5]}${m[6]}`
 }
 
 export function eventToIcal(event: CalendarEvent): string {
@@ -68,9 +61,11 @@ export function icalToEvent(
   const parseIcalDate = (s: string): string => {
     if (!s) return new Date().toISOString()
     // Format: 20260609T100000 or 20260609T100000Z
-    const m = s.match(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})/)
+    const m = s.match(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})(Z?)/)
     if (!m) return new Date().toISOString()
-    return `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6]}+03:00`
+    // Return as UTC if Z suffix, otherwise treat as-is (Moscow time assumed by TZID)
+    const suffix = m[7] === 'Z' ? 'Z' : '+03:00'
+    return `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6]}${suffix}`
   }
 
   let repeat: RepeatType = 'none'

@@ -1,0 +1,93 @@
+<h2>Какой визуальный стиль ближе?</h2>
+<p class="subtitle">Это задаёт общее ощущение приложения</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;border-radius:10px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,0.08)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <span style="font-size:13px;font-weight:600;color:#1a1a2e">Июнь 2026</span>
+          <span style="font-size:11px;color:#7c7c9c">Неделя</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:8px">
+          <div style="text-align:center;font-size:9px;color:#9999bb;font-weight:600">ПН</div>
+          <div style="text-align:center;font-size:9px;color:#9999bb;font-weight:600">ВТ</div>
+          <div style="text-align:center;font-size:9px;color:#9999bb;font-weight:600">СР</div>
+          <div style="text-align:center;font-size:9px;color:#9999bb;font-weight:600">ЧТ</div>
+          <div style="text-align:center;font-size:9px;color:#9999bb;font-weight:600">ПТ</div>
+          <div style="text-align:center;font-size:9px;color:#9999bb;font-weight:600">СБ</div>
+          <div style="text-align:center;font-size:9px;color:#9999bb;font-weight:600">ВС</div>
+        </div>
+        <div style="font-size:10px">
+          <div style="background:#e8e4ff;border-left:3px solid #7c5cbf;border-radius:4px;padding:4px 6px;margin-bottom:3px;color:#3d2b6b">👶 10:00 Занятие с ребёнком</div>
+          <div style="background:#fde8f0;border-left:3px solid #e8639a;border-radius:4px;padding:4px 6px;margin-bottom:3px;color:#7a1a40">🐕 Прогулка с Бобиком</div>
+          <div style="background:#e4f4e8;border-left:3px solid #4caf78;border-radius:4px;padding:4px 6px;color:#1a4d2a">💪 Зал</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>А — Мягкий и уютный</h3>
+      <p>Пастельные тона, фиолетово-розовая палитра. Женственно, спокойно, приятно смотреть долго.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#0f172a;border-radius:10px;padding:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <span style="font-size:13px;font-weight:600;color:#f1f5f9">Июнь 2026</span>
+          <span style="font-size:11px;color:#64748b">Неделя</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:8px">
+          <div style="text-align:center;font-size:9px;color:#475569;font-weight:600">ПН</div>
+          <div style="text-align:center;font-size:9px;color:#475569;font-weight:600">ВТ</div>
+          <div style="text-align:center;font-size:9px;color:#475569;font-weight:600">СР</div>
+          <div style="text-align:center;font-size:9px;color:#475569;font-weight:600">ЧТ</div>
+          <div style="text-align:center;font-size:9px;color:#475569;font-weight:600">ПТ</div>
+          <div style="text-align:center;font-size:9px;color:#475569;font-weight:600">СБ</div>
+          <div style="text-align:center;font-size:9px;color:#475569;font-weight:600">ВС</div>
+        </div>
+        <div style="font-size:10px">
+          <div style="background:#1e293b;border-left:3px solid #818cf8;border-radius:4px;padding:4px 6px;margin-bottom:3px;color:#c7d2fe">👶 10:00 Занятие с ребёнком</div>
+          <div style="background:#1e293b;border-left:3px solid #f472b6;border-radius:4px;padding:4px 6px;margin-bottom:3px;color:#fbcfe8">🐕 Прогулка с Бобиком</div>
+          <div style="background:#1e293b;border-left:3px solid #34d399;border-radius:4px;padding:4px 6px;color:#a7f3d0">💪 Зал</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Б — Тёмная тема</h3>
+      <p>Тёмный фон, яркие акценты. Современно, не напрягает глаза вечером, хорошо смотрится на телефоне.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fafaf8;border-radius:10px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <span style="font-size:13px;font-weight:600;color:#111">Июнь 2026</span>
+          <span style="font-size:11px;color:#888">Неделя</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:8px">
+          <div style="text-align:center;font-size:9px;color:#aaa;font-weight:600">ПН</div>
+          <div style="text-align:center;font-size:9px;color:#aaa;font-weight:600">ВТ</div>
+          <div style="text-align:center;font-size:9px;color:#aaa;font-weight:600">СР</div>
+          <div style="text-align:center;font-size:9px;color:#aaa;font-weight:600">ЧТ</div>
+          <div style="text-align:center;font-size:9px;color:#aaa;font-weight:600">ПТ</div>
+          <div style="text-align:center;font-size:9px;color:#aaa;font-weight:600">СБ</div>
+          <div style="text-align:center;font-size:9px;color:#aaa;font-weight:600">ВС</div>
+        </div>
+        <div style="font-size:10px">
+          <div style="background:#fff3e0;border-left:3px solid #fb923c;border-radius:4px;padding:4px 6px;margin-bottom:3px;color:#7c3500">👶 10:00 Занятие с ребёнком</div>
+          <div style="background:#fef9c3;border-left:3px solid #facc15;border-radius:4px;padding:4px 6px;margin-bottom:3px;color:#713f12">🐕 Прогулка с Бобиком</div>
+          <div style="background:#ecfdf5;border-left:3px solid #10b981;border-radius:4px;padding:4px 6px;color:#064e3b">💪 Зал</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>В — Чистый и яркий</h3>
+      <p>Белый фон, тёплые оранжево-зелёные акценты. Свежо, энергично, похоже на Notion.</p>
+    </div>
+  </div>
+
+</div>

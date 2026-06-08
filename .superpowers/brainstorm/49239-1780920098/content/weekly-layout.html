@@ -1,0 +1,114 @@
+<h2>Как выглядит недельный вид?</h2>
+<p class="subtitle">Выбери раскладку, которая кажется удобнее всего</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#f8f9fa;border-radius:8px;padding:12px;font-size:11px;font-family:monospace">
+        <div style="display:grid;grid-template-columns:40px repeat(7,1fr);gap:2px;color:#333">
+          <div></div>
+          <div style="text-align:center;font-weight:bold;color:#666;font-size:10px">ПН</div>
+          <div style="text-align:center;font-weight:bold;color:#666;font-size:10px">ВТ</div>
+          <div style="text-align:center;font-weight:bold;color:#666;font-size:10px">СР</div>
+          <div style="text-align:center;font-weight:bold;color:#666;font-size:10px">ЧТ</div>
+          <div style="text-align:center;font-weight:bold;color:#666;font-size:10px">ПТ</div>
+          <div style="text-align:center;font-weight:bold;color:#666;font-size:10px">СБ</div>
+          <div style="text-align:center;font-weight:bold;color:#666;font-size:10px">ВС</div>
+
+          <div style="color:#aaa;font-size:9px">8:00</div>
+          <div style="background:#fce4ec;border-radius:3px;padding:2px;font-size:9px">🐕 Прогулка</div>
+          <div style="background:#fce4ec;border-radius:3px;padding:2px;font-size:9px">🐕 Прогулка</div>
+          <div style="background:#fce4ec;border-radius:3px;padding:2px;font-size:9px">🐕 Прогулка</div>
+          <div style="background:#fce4ec;border-radius:3px;padding:2px;font-size:9px">🐕 Прогулка</div>
+          <div style="background:#fce4ec;border-radius:3px;padding:2px;font-size:9px">🐕 Прогулка</div>
+          <div style="background:#fce4ec;border-radius:3px;padding:2px;font-size:9px">🐕 Прогулка</div>
+          <div style="background:#fce4ec;border-radius:3px;padding:2px;font-size:9px">🐕 Прогулка</div>
+
+          <div style="color:#aaa;font-size:9px">10:00</div>
+          <div style="background:#e3f2fd;border-radius:3px;padding:2px;font-size:9px">👶 Занятие</div>
+          <div style="background:#f3e5f5;border-radius:3px;padding:2px;font-size:9px">💪 Зал</div>
+          <div style="background:#e3f2fd;border-radius:3px;padding:2px;font-size:9px">👶 Занятие</div>
+          <div style="background:#e3f2fd;border-radius:3px;padding:2px;font-size:9px">👶 Занятие</div>
+          <div></div>
+          <div style="background:#fff9c4;border-radius:3px;padding:2px;font-size:9px">📝 Блог</div>
+          <div style="background:#f3e5f5;border-radius:3px;padding:2px;font-size:9px">💪 Зал</div>
+
+          <div style="color:#aaa;font-size:9px">14:00</div>
+          <div style="background:#e8f5e9;border-radius:3px;padding:2px;font-size:9px">📝 Блог</div>
+          <div></div>
+          <div style="background:#e8f5e9;border-radius:3px;padding:2px;font-size:9px">📝 Блог</div>
+          <div style="background:#e3f2fd;border-radius:3px;padding:2px;font-size:9px">👤 Клиентка</div>
+          <div style="background:#f3e5f5;border-radius:3px;padding:2px;font-size:9px">💪 Зал</div>
+          <div></div>
+          <div></div>
+
+          <div style="color:#aaa;font-size:9px">17:00</div>
+          <div style="background:#e3f2fd;border-radius:3px;padding:2px;font-size:9px">👶 Занятие</div>
+          <div></div>
+          <div style="background:#e3f2fd;border-radius:3px;padding:2px;font-size:9px">👶 Занятие</div>
+          <div></div>
+          <div style="background:#e3f2fd;border-radius:3px;padding:2px;font-size:9px">👶 Занятие</div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>А — Сетка недели (Google Calendar стиль)</h3>
+      <p>Все 7 дней видны сразу. Блоки по времени. Видно пустые слоты. Хорошо для ноута, на телефоне скролл влево-вправо.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#f8f9fa;border-radius:8px;padding:12px;font-size:11px">
+        <div style="display:flex;gap:6px;overflow:hidden">
+          <div style="flex:1;background:white;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+            <div style="font-weight:bold;color:#333;margin-bottom:6px;font-size:11px">ПОНЕДЕЛЬНИК</div>
+            <div style="background:#e3f2fd;border-radius:4px;padding:4px;margin-bottom:3px;font-size:10px">10:00 👶 Занятие</div>
+            <div style="background:#e8f5e9;border-radius:4px;padding:4px;margin-bottom:3px;font-size:10px">12:30 📝 Блог</div>
+            <div style="background:#e3f2fd;border-radius:4px;padding:4px;font-size:10px">17:00 👶 Занятие</div>
+          </div>
+          <div style="flex:1;background:white;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+            <div style="font-weight:bold;color:#333;margin-bottom:6px;font-size:11px">ВТОРНИК</div>
+            <div style="background:#fce4ec;border-radius:4px;padding:4px;margin-bottom:3px;font-size:10px">8:30 🐕 Прогулка</div>
+            <div style="background:#f3e5f5;border-radius:4px;padding:4px;font-size:10px">11:00 💪 Зал</div>
+          </div>
+        </div>
+        <div style="text-align:center;color:#aaa;font-size:9px;margin-top:6px">← свайп →</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Б — Карточки дней (свайп)</h3>
+      <p>Один день — одна карточка. Свайп влево-вправо между днями. Идеально для телефона, на ноуте — горизонтальный скролл.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#f8f9fa;border-radius:8px;padding:12px;font-size:11px">
+        <div style="background:white;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-weight:bold;font-size:12px">← Понедельник →</span>
+            <span style="font-size:10px;color:#666">9 июня</span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <div style="width:35px;color:#aaa;font-size:10px;line-height:2">8:00<br>10:00<br>12:30<br>15:00<br>17:00<br>20:00</div>
+            <div style="flex:1">
+              <div style="background:#fce4ec;border-radius:4px;padding:6px;margin-bottom:4px;font-size:10px;border-left:3px solid #e91e63">🐕 Прогулка с собакой (30 мин)</div>
+              <div style="background:#e3f2fd;border-radius:4px;padding:6px;margin-bottom:4px;font-size:10px;border-left:3px solid #2196f3">👶 Занятие с ребёнком (2,5 ч)</div>
+              <div style="background:#e8f5e9;border-radius:4px;padding:6px;margin-bottom:4px;font-size:10px;border-left:3px solid #4caf50">📝 Блог / учёба</div>
+              <div style="background:#e3f2fd;border-radius:4px;padding:6px;font-size:10px;border-left:3px solid #2196f3">👶 Занятие с ребёнком (2,5 ч)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>В — День крупно + стрелки</h3>
+      <p>Фокус на одном дне. Крупные читаемые блоки с цветными полосками. Кнопки ← → для переключения. Одинаково удобно на телефоне и ноуте.</p>
+    </div>
+  </div>
+
+</div>
