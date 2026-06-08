@@ -19,6 +19,7 @@ export default function MonthPage() {
   const [showEditor, setShowEditor] = useState(false)
   const [dayEvents, setDayEvents] = useState<CalendarEvent[]>([])
   const [selectedDay, setSelectedDay] = useState<Date | undefined>()
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => { setEvents(loadEvents()) }, [])
 
@@ -35,19 +36,28 @@ export default function MonthPage() {
     const creds = loadCredentials()
     setShowEditor(false)
     try {
+      let next: CalendarEvent[]
       if (creds && event.url) {
         await updateEvent(creds, event)
-        const next = events.map(e => e.id === event.id ? event : e)
-        setEvents(next); saveEvents(next)
+        next = events.map(e => e.id === event.id ? event : e)
       } else if (creds) {
         const created = await createEvent(creds, event)
-        const next = [...events, created]
-        setEvents(next); saveEvents(next)
+        next = [...events, created]
       } else {
-        const next = events.filter(e => e.id !== event.id).concat(event)
-        setEvents(next); saveEvents(next)
+        next = events.filter(e => e.id !== event.id).concat(event)
       }
-    } catch { /* silent — user sees stale data */ }
+      setEvents(next)
+      saveEvents(next)
+      // Re-sync dayEvents for the currently selected day
+      if (selectedDay) {
+        setDayEvents(next.filter(e => {
+          const s = new Date(e.startTime)
+          return s.toDateString() === selectedDay.toDateString()
+        }))
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Ошибка сохранения')
+    }
   }
 
   const handleDelete = async (event: CalendarEvent) => {
@@ -58,11 +68,19 @@ export default function MonthPage() {
       const next = events.filter(e => e.id !== event.id)
       setEvents(next); saveEvents(next)
       setDayEvents(prev => prev.filter(e => e.id !== event.id))
-    } catch { /* silent */ }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Ошибка удаления')
+    }
   }
 
   return (
     <div className="flex flex-col h-screen max-h-screen">
+      {error && (
+        <div className="bg-yellow-50 border-b border-yellow-200 px-4 py-2 text-xs text-yellow-700 flex justify-between">
+          <span>⚠️ {error}</span>
+          <button onClick={() => setError(null)}>✕</button>
+        </div>
+      )}
       <NavBar
         title={monthTitle(month)}
         onPrev={() => setMonth(d => new Date(d.getFullYear(), d.getMonth() - 1, 1))}
