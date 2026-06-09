@@ -6,6 +6,7 @@ import EventEditor from '@/components/EventEditor'
 import { CalendarEvent } from '@/lib/types'
 import { loadEvents, saveEvents, loadCredentials, saveSyncState } from '@/lib/storage'
 import { fetchEvents, createEvent, updateEvent, deleteEvent } from '@/lib/caldav-client'
+import { generateSeedEvents } from '@/lib/seed-events'
 
 function weekTitle(monday: Date): string {
   const sunday = new Date(monday)
@@ -23,7 +24,14 @@ export default function WeekPage() {
   const [syncError, setSyncError] = useState<string | null>(null)
 
   useEffect(() => {
-    setEvents(loadEvents())
+    const stored = loadEvents()
+    if (stored.length === 0) {
+      const seed = generateSeedEvents()
+      setEvents(seed)
+      saveEvents(seed)
+    } else {
+      setEvents(stored)
+    }
     sync()
   }, [])
 
